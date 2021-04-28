@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>회원가입</title>
+    </head>
+    <body>
+        <h1>회원가입</h1>
+        <form th:object="${member}"  th:action="@{/members}" method="POST">
+            <div>
+                <label for="email">이메일</label>
+                <input id="email" type="email" th:field="*{email}">
+            </div>
+            <div>
+                <label for="password">비밀번호</label>
+                <input id="password" type="text" th:field="*{password}">
+            </div>
+            <div>
+                <label for="name">이름</label>
+                <input id="name" type="text" th:field="*{name}">
+            </div>
+            <div>
+                <label for="sex">성별</label>
+                <select id="sex" th:field="*{sex}">
+                    <option th:each="sexOption : ${T(me.practice.demo.domains.member.MemberSex).values()}
+"                           th:value="${sexOption}" th:text="${sexOption.getSex()}">성별</option>
+                </select>
+            </div>
+            <div>
+                <label for="phone">핸드폰번호</label>
+                <input id="phone" type="text" th:field="*{phone}">
+            </div>
+            <div>
+                <label for="contact">연락처</label>
+                <input id="contact" type="text" th:field="*{contact}">
+            </div>
+            <div>
+                <label for="city">거주시</label>
+                <input id="city" type="text" th:field="*{city}">
+            </div>
+            <div>
+                <label for="street">상세주소</label>
+                <input id="street" type="text" th:field="*{street}">
+            </div>
+            <div>
+                <label for="zipCode">우편번호</label>
+                <input id="zipCode" type="text" th:field="*{zipCode}">
+            </div>
+            <div>
+                <input type="submit" value="가입">
+            </div>
+        </form>
+    </body>
+</html>

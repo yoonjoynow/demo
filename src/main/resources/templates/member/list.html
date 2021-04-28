@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>회원 목록</title>
+    </head>
+    <body>
+        <div>
+            <h1>회원 목록</h1>
+        </div>
+        <div th:if="${members.size() == 0}">
+            <p th:text="kakaka">hahaha</p>
+        </div>
+        <div th:unless="${members.size()} == 0">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>이메일</th>
+                        <th>이름</th>
+                        <th>성별</th>
+                        <th>핸드폰</th>
+                        <th>연락처</th>
+                        <th>거주시</th>
+                        <th>상세주소</th>
+                        <th>우편번호</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="member : ${members}">
+                        <th th:text="${memberStat.count}">No</th>
+                        <th th:text="${member.email}">이메일</th>
+                        <th th:text="${member.name}">이름</th>
+                        <th th:text="${member.sex}">성별</th>
+                        <th th:text="${member.contact.phone}">핸드폰</th>
+                        <th th:text="${member.contact.contact}">연락처</th>
+                        <th th:text="${member.address.city}">거주시</th>
+                        <th th:text="${member.address.street}">상세주소</th>
+                        <th th:text="${member.address.zipCode}">우편번호</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <button type="button" onclick="location.href='/'">뒤로가기2</button>
+        </div>
+    </body>
+</html>
